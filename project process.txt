@@ -1,0 +1,20 @@
+1 - setting up the project process 
+	- create project 
+		django-admin startproject [mysite]
+	- create app
+	- Active app in setting 
+
+
+2 - make the model 
+	## field for model
+	add title 
+	add slug(label)
+	add body(text)
+	add creat(date)
+	add update(date)
+	add publish(data)
+	
+	## sorting and meta class 
+	## change class behavior by meta class 
+	sort by publish
+	index filed for save publish data 
