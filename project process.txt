@@ -3,6 +3,8 @@
 		django-admin startproject [mysite]
 	- create app
 	- Active app in setting 
+	- after make model conver to database by makemigratios ( commend)	
+	- after makemigrations use migrate command
 
 
 2 - make the model 
@@ -18,3 +20,30 @@
 	## change class behavior by meta class 
 	sort by publish
 	index filed for save publish data 
+
+	## adding status
+	## make a class that have 2 statuse df and pb
+
+	make class 
+	use statuse method 
+
+	## Add user model 
+	Author 
+
+3 - Creating an administration site for models
+	Creating a superuser
+		python manage.py createsuperuser
+	The Django administration site
+		python manage.py runserver
+	Adding models to the administration site
+		from .models import Post   ## Post is model in this sample 
+		admin.site.register(Post)  ## register Post model in the admin panel 
+	Customizing how models are displayed
+	we could customize admin panel that how can show it by change model 
+	we need define a class .
+	in fact we make a class same "PostAdmin" that control Post model 
+		from django.contrib import admin
+		from .models import Post
+		@admin.register(Post)
+		class PostAdmin(admin.ModelAdmin):
+			## customize filter and etc.
