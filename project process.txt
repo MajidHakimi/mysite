@@ -1,4 +1,11 @@
-1 - setting up the project process 
+
+#########################################################################################################
+################################################# CH 01 #################################################
+#########################################################################################################
+
+
+
+######################## 1 - setting up the project process #############################################
 	- create project 
 		django-admin startproject [mysite]
 	- create app
@@ -7,7 +14,7 @@
 	- after makemigrations use migrate command
 
 
-2 - make the model 
+####################### 2 - make the model ##############################################################
 	## field for model
 	add title 
 	add slug(label)
@@ -30,7 +37,7 @@
 	## Add user model 
 	Author 
 
-3 - Creating an administration site for models
+############################### 3 - Creating an administration site for models ####################
 	Creating a superuser
 		python manage.py createsuperuser
 	The Django administration site
@@ -40,6 +47,8 @@
 		admin.site.register(Post)  ## register Post model in the admin panel 
 	Customizing how models are displayed
 	we could customize admin panel that how can show it by change model 
+	With a few lines of code, we have customized the way the model is displayed on the administration
+	site.
 	we need define a class .
 	in fact we make a class same "PostAdmin" that control Post model 
 		from django.contrib import admin
@@ -47,3 +56,43 @@
 		@admin.register(Post)
 		class PostAdmin(admin.ModelAdmin):
 			## customize filter and etc.
+
+########################################	4- Define URL   #######################################
+		for each app sepreatly then 
+			import view 
+			import liberry for path 
+			use command ( show path , show view that we want to on URL , name for view )
+		add app in URL setting project  
+	## Creating own model manager . without it we should use object manager
+	## for retrive Qury but for make own we immplement them 
+		1 - make a class for new manager 
+		2 - define defaoult manager and new custom manager in our model 
+
+################################       create template      ##################################################	
+	## create base template 
+		# loaad static file command ( load all css and js file )
+		# make HTML fromat file and 
+		# insert where do I want to insert dynamic data by django template tag 
+
+
+		## define the base according to content and sidebar 
+			# content 
+			# sidebar
+
+	## create child template 
+		# make HTML fromat file and 
+		# insert where do I want to insert dynamic data by django template tag 
+
+		1- start with inhretent mother template
+		2- insert all in content block 
+		3- decide what we want to show 
+			3-1 show link that consider the name of post
+			3-2 show a paragraph that show publsh date and author 
+			3-3 show 30 word of the body of post 
+		4- we want to run step 3 for all post then we use 'for loop'
+
+
+		
+#########################################################################################################
+################################################# CH 02 #################################################
+#########################################################################################################

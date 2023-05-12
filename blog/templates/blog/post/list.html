@@ -1,0 +1,33 @@
+
+
+
+
+# extend from base template 
+{% extends "blog/base.html" %}
+
+{% block title %} My blog {% endblock %}
+
+
+## create loop that create 
+{% block content %}
+    <h1>  Blog  </h1>
+    {% for post in posts %}
+        <h2> 
+            <a href = {% url "blog:post_detail" post.id %}>
+                {{post.title}}
+            </a>
+        </h2>
+
+        <p> published {{ post.publish}} by {{ post.author }}  </p>
+
+        {{ post.body | truncatewords:50 | linebreaks }}
+        
+    {% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
