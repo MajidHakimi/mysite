@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
+
 
 
 # class for manage published in quey set 
@@ -39,7 +41,15 @@ class Post(models.Model):
         ordering = ['-publish']
         indexes = [
             models.Index(fields=['-publish']),
-        ]    
+        ]   
+
+
+    # implement method get_abseloute_url from models 
+    # return urls according what we want 
+
+    def  get_absolute_url(self):
+        return reverse("blog:post_detail", args=[self.id] )
+    
     def __str__(self):
         return self.title
 

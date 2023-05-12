@@ -96,3 +96,19 @@
 #########################################################################################################
 ################################################# CH 02 #################################################
 #########################################################################################################
+
+## Goals 
+	# Add functionality 
+		1-conical URL : maybe differnt page that show same content . uniqe URL for each content  
+		2-SEO freandly : date + slug of post name 
+		3-Pagination : same below google number 
+		4-send email
+		5-share post by email 
+		5-take comment
+	# learn django capebility 
+		1-view class 
+		2-django forms 
+
+------------------------------------------------------------------------------------------------------------
+1-conical URL
+
