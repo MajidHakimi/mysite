@@ -110,5 +110,20 @@
 		2-django forms 
 
 ------------------------------------------------------------------------------------------------------------
-1-conical URL
+1-Canonical URL : maybe you use diffrent page that use same post . diff between PAGE and POST . make master
+	copy for the post .
+	# we need 3 task 
+		1 - there is a method get_abseloute_url() in models object + we implement it 
+			for post_detail to make canonical URL
+		2 - use canonacl for post_detail
+		3 - we need make URL by name and another option same date and etc. we can use 
+			reverse() function in django.urls 
+
+------------------------------------------------------------------------------------------------------------
+2-Creating SEO-friendly URLs for posts
+	for SEO frendly for google index we need "date+url" and save it in database and it maust be uniqe
+
+	# Model : change model and make it uniqe
+	# View  : Change View 
+	# URL   : Change URLS 
 
