@@ -123,7 +123,40 @@
 2-Creating SEO-friendly URLs for posts
 	for SEO frendly for google index we need "date+url" and save it in database and it maust be uniqe
 
-	# Model : change model and make it uniqe
+	# Model : change model 
+		Save uniqe post slug+date 
 	# View  : Change View 
+		retrive post with special slug and date(year,month,day)
 	# URL   : Change URLS 
+		before imported view in URL for app ( blog ). before project post show by id but now we 
+		consider them according to date+slug, then change URL 
+
+-------------------------------------------------------------------------------------------------------------
+3-Pagination : Show posts in number of page , split posts for pages
+	django has built in class 
+
+	# Change the view 
+		goal : at least we want to get number and retrive posts for that number,below roadmap  
+		1-import paginator object 
+			from django.core.paginator import Paginator
+		2-make a paginator object that save all post in paginator ( that get number and show them ) . 
+			get 2 parametr ( all posts + number for split )
+		3-get number of paginator page . get 2 parameter ( page + number of page that number is out of range )
+		4-new post page that get pages and save posts for show 
+
+		note : view give us tag to use it in template 
+
+	# template 
+		goal : we want to make global pagination template for use another place . in HTML 
+			- we have 3 steps previous , current , next
+			- for all define a dive and define class 
+			- for each step define spine with class to change in css 
+			- use if and endif 
+			- FINAL : add this template the END of HTML 
+
+
+
+
+
+
 
