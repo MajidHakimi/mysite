@@ -132,7 +132,7 @@
 		consider them according to date+slug, then change URL 
 
 -------------------------------------------------------------------------------------------------------------
-3-Pagination : Show posts in number of page , split posts for pages
+3-1 Pagination ( by function ): Show posts in number of page , split posts for pages
 	django has built in class 
 
 	# Change the view 
@@ -153,6 +153,35 @@
 			- for each step define spine with class to change in css 
 			- use if and endif 
 			- FINAL : add this template the END of HTML 
+
+
+3-1 Pagination (use class view ):
+
+	Note : 
+		- queryset is list of object 
+		- qureyset is collection of data from database
+		- by quaryset we could access to all of field without changing 
+		- we can sort and filter and etc.
+		
+	inherit form class ListView get us buildin paginate and we can set below attrbute  
+		1-paginate_by : set number of paginage page 
+		2-context_object_name : a atrebute that use in context(template) 
+	
+
+	view : for write class view the roadmap is below 
+		- we should get all of data by Model.Object.all() and save it in queryset attrebute
+		- we want to access to all query in context ( teppmlate ) or show what filterd 
+			data that I want . 
+		- we don't want to change the template for easy to undrestanding then we consider 
+			<< context_object_name = 'posts' >> , in fact we use posts to context variable .
+			we could show the data that I want .
+	template : becuse we use calss view situted function view we use attrebute <<page_obj>>
+		but in function we use <<page=posts>> but in view class page_obj save data for 
+		each page 
+		
+
+
+
 
 
 
