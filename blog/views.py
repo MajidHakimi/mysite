@@ -3,6 +3,8 @@ from .models import Post
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.views.generic import ListView
 from .forms import EmailPostForm
+from django.core.mail import send_mail
+
 
 
 class PostListView(ListView):
@@ -13,16 +15,26 @@ class PostListView(ListView):
 
 def post_share(request , post_id):
 
+    sent = False
     post = get_object_or_404(Post , id=post_id , status=Post.Status.PUBLISHED )
-    if request == 'POST':
+    if request.method == 'POST':
         form = EmailPostForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             cd = form.cleaned_data
+
+            post_url = request.build_absolute_uri(post.get_absolute_url())
+            subject = f"{cd['name']} recommend you to read {post.title}"
+            message = f"read {post.title} in {post_url} that comments"\
+                    f" {cd['comments']} "
+            send_mail(subject , message , 'kalkele58@gmail.com' , [cd['to']])
+            sent = True
     else:
         form = EmailPostForm()
-    return(request , 'blog/post/share.html',
-           {'posts':post,
-            'form':form})
+    return render(request ,
+                  'blog/post/share.html',
+                  {'posts':post,
+                   'form':form,
+                   'sent':sent})
 
 
 
@@ -38,3 +50,5 @@ def post_detail(request, post , year , month , day  ):
     return render(request,
                   'blog/post/detail.html',
                   {'post': post})
+
+
