@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post,Comments
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.views.generic import ListView
-from .forms import EmailPostForm
+from .forms import EmailPostForm,CommentForm
 from django.core.mail import send_mail
+from django.views.decorators.http import require_POST
 
 
 
@@ -50,5 +51,44 @@ def post_detail(request, post , year , month , day  ):
     return render(request,
                   'blog/post/detail.html',
                   {'post': post})
+
+
+@require_POST
+def post_comment(request , post_id):
+
+    # retive post by id for connect to comment 
+    post = get_object_or_404(Post,
+                             id=post_id,
+                             status=Post.Status.PUBLISHED)
+    
+    # define blank comment object to save comment 
+    comment = None
+
+    # make a form object instatnce to comment form 
+    form = CommentForm(data=request.POST)
+
+    # validate form 
+    if form.is_valid():
+
+        # put the form data in comment but don't save it 
+        comment = form.save(commit=False)
+
+        # assign specific post that retrived to post of comment object 
+        comment.post = post
+
+        # save comment 
+        comment.save()
+
+    # render requset and make "comments" tag to use in template 
+    return render(request ,
+                   "/blog/post/comment/html",
+                   {"post":post,
+                    "form":form,
+                    "comment":comment})
+
+
+
+    
+    
 
 
