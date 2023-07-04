@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post,Comments
+from .models import Post,Comment
 
 
 @admin.register(Post)
@@ -12,7 +12,7 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'publish'
     ordering = ['status', 'publish']
 
-@admin.register(Comments)
+@admin.register(Comment)
 class commentAdmin(admin.ModelAdmin):
     list_filter = ['name', 'email', 'post', 'created', 'active']
     display_filter = ['active','created','updated']
